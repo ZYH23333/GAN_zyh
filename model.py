@@ -3,7 +3,6 @@ import torch.nn as nn
 
 
 # 这次测试的一次修改
-# 这是测试的一次推拉
 
 class Generator(nn.Module):
     def __init__(self, layer_cnt):
