@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 
 
+# 这次测试的一次修改
+
 class Generator(nn.Module):
     def __init__(self, layer_cnt):
         super().__init__()
