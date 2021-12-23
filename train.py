@@ -4,7 +4,13 @@ from torch.utils.data import DataLoader
 import argparse
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from model import Generator
+from model import Generator, Discriminator
+
+# 1.模型搭建
+# 2.损失函数
+# 3.优化器
+# 4.训练框架搭建
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -23,21 +29,20 @@ if __name__ == '__main__':
     datasets = datasets.MNIST(root=r'F:\DataSets',download=True, transform=transforms)
     train_data = DataLoader(dataset=datasets, batch_size=8, shuffle=True)
 
-    print(train_data)
 
     G_model = Generator(
         layer_cnt=args.G_layer_cnt
     )
 
-    print(G_model)
+    D_model = Discriminator(
 
-    for para in G_model.parameters():
-        print(para.shape)
-
+    )
 
     for epoch in range(epochs):
         pbar = tqdm(train_data)
         for x, y in pbar:
             p_g = G_model()
-            plt.imshow(p_g.detach())
-            plt.show()
+            # plt.imshow(p_g.detach())
+            # plt.show()
+            res = D_model(p_g)
+            print(res)
